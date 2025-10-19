@@ -1,0 +1,26 @@
+routes:
+  - path: "/api/users"
+    pathType: "exact"
+    method: "GET"
+    backends:
+      - "http://localhost:8081"
+      - "http://localhost:8082"
+
+  - path: "/api/products"
+    pathType: "exact"
+    method: "GET"
+    backends:
+      - "http://localhost:8083"
+      - "http://localhost:8084"
+
+  - path: "/api/echo"
+    pathType: "exact"
+    method: "GET"
+    backends:
+      - "http://localhost:8080"       
+
+  - path: "/api/"
+    pathType: "prefix"
+    method: "POST"
+    backends:
+      - "http://localhost:8080"
