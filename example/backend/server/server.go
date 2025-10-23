@@ -38,6 +38,7 @@ func main() {
 		log.Fatalf("Server failed to start: %v", err)
 	}
 }
+
 func healthHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	response := HealthAPIResponse{

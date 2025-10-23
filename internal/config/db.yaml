@@ -1,0 +1,11 @@
+## MS SQL Server connection settings
+mssql:
+  host: "localhost"
+  port: 
+  user: "vv185097"
+  password: "App0mattox$123456"
+  database: "EAGRT"
+  options:
+    encrypt: false
+    trustServerCertificate: false
+    connectionTimeout: 30

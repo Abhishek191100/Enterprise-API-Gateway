@@ -2,19 +2,21 @@ package logger
 
 import (
 	"io"
+	"log"
 	"log/slog"
 	"os"
-	"github.com/Abhishek191100/Enterprise-API-Gateway/utils"
 )
 
 //hard coding for now
 const logFilePath = "./logs/system.log"
 const EnableConsoleLogging = false
 
-func log(msg string, lvl string){
+func Log(msg string, lvl string){
 
 	file,er := os.OpenFile(logFilePath, os.O_CREATE|os.O_APPEND|os.O_WRONLY,0666)
-	utils.CheckError(er)
+	if er != nil{
+		log.Fatal("Could not open log file")
+	}
 	
 	var w io.Writer
 	//Write to console only if EnableConsoleLogging is true or if logFielPath is not set
@@ -33,6 +35,9 @@ func log(msg string, lvl string){
 
 	//Create a new logger instance using the JSON Handler and customized handler options
 	logger := slog.New(slog.NewJSONHandler(w, &handlerOptions))
+	if logger != nil{
+		log.Fatal("Could not create new Json handler","ERROR")
+	}
 	slog.SetDefault(logger)
 
 	switch lvl {
